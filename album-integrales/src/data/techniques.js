@@ -54,7 +54,7 @@ export const techniques = [
   {
     id: 'integracion-por-partes',
     numero: '02',
-    accent: '#ff3df0',
+    accent: '#ff2d4d',
     titulo: 'Integración por Partes',
     resumenHome: 'La versión integral de la regla del producto.',
     descripcion:

@@ -96,12 +96,12 @@ export default function TechniqueLayout({ tech }) {
                   a={tech.area.a}
                   b={tech.area.b}
                   fColor={tech.accent}
-                  gColor="#ff3df0"
+                  gColor="#ff2d4d"
                 />
               </div>
               <div className="legend">
                 <span className="swatch"><i style={{ background: tech.accent }} />{tech.area.fLabel}</span>
-                <span className="swatch"><i style={{ background: '#ff3df0' }} />{tech.area.gLabel}</span>
+                <span className="swatch"><i style={{ background: '#ff2d4d' }} />{tech.area.gLabel}</span>
                 <span className="swatch"><i style={{ background: '#8b5cf6' }} />Área [a, b]</span>
               </div>
             </div>

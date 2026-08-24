@@ -17,8 +17,8 @@
   /* --- Color: neón --- */
   --cyan: #00f0ff;
   --cyan-dim: #0a5f66;
-  --magenta: #810000;
-  --magenta-dim: #4c0505;
+  --red: #ff2d4d;
+  --red-dim: #6b1420;
   --violet: #8b5cf6;
   --violet-dim: #3a2a72;
   --amber: #ffb020;
@@ -48,7 +48,7 @@ body {
   margin: 0;
   background:
     radial-gradient(ellipse 900px 500px at 12% -10%, rgba(0, 240, 255, 0.10), transparent 60%),
-    radial-gradient(ellipse 900px 600px at 100% 0%, rgba(255, 61, 240, 0.08), transparent 55%),
+    radial-gradient(ellipse 900px 600px at 100% 0%, rgba(255, 45, 77, 0.08), transparent 55%),
     var(--bg-void);
   color: var(--text-hi);
   font-family: var(--font-display);
@@ -103,7 +103,7 @@ p { line-height: 1.65; }
   position: absolute;
   left: 0; right: 0; bottom: -1px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--cyan), var(--magenta), transparent);
+  background: linear-gradient(90deg, transparent, var(--cyan), var(--red), transparent);
   background-size: 200% 100%;
   animation: scan-sweep 6s linear infinite;
   opacity: 0.9;
@@ -216,7 +216,7 @@ p { line-height: 1.65; }
   margin: 22px 0 14px;
   font-weight: 700;
   letter-spacing: -0.01em;
-  background: linear-gradient(120deg, var(--text-hi) 30%, var(--cyan) 55%, var(--magenta) 85%);
+  background: linear-gradient(120deg, var(--text-hi) 30%, var(--cyan) 55%, var(--red) 85%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -229,89 +229,90 @@ p { line-height: 1.65; }
   font-size: 1.05rem;
 }
 
-/* Grid de 5 tarjetas */
-.card-grid {
-  max-width: 1100px;
+/* Índice como lista vertical (cada fila = una técnica, en orden 01→05) */
+.tech-list {
+  max-width: 860px;
   margin: 56px auto 100px;
   padding: 0 28px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-}
-
-.tech-card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 26px;
-  min-height: 230px;
-  padding: 26px;
-  border-radius: var(--radius);
-  background: linear-gradient(160deg, var(--bg-panel-2), var(--bg-panel));
-  border: 1px solid var(--line);
-  overflow: hidden;
-  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+  border-top: 1px solid var(--line);
 }
 
-.tech-card::before {
+.tech-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 24px;
+  padding: 26px 18px 26px 8px;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.18s ease, padding-left 0.18s ease;
+}
+
+.tech-row::before {
   content: '';
   position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--card-accent, var(--cyan)), transparent 45%);
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.55;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--card-accent, var(--cyan));
+  box-shadow: 0 0 12px var(--card-accent, var(--cyan));
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.22s ease;
 }
 
-.tech-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--card-accent, var(--cyan));
-  box-shadow: 0 14px 34px -14px var(--card-accent, var(--cyan));
+.tech-row:hover {
+  background: rgba(255, 255, 255, 0.02);
+  padding-left: 22px;
 }
 
-.tech-card .num {
+.tech-row:hover::before { transform: scaleY(1); }
+
+.row-num {
   font-family: var(--font-label);
-  font-size: 3.4rem;
+  font-size: 2.2rem;
   font-weight: 700;
   color: var(--card-accent, var(--cyan));
+  text-shadow: 0 0 20px var(--card-accent, var(--cyan));
+  min-width: 64px;
   line-height: 1;
-  opacity: 0.9;
-  text-shadow: 0 0 26px var(--card-accent, var(--cyan));
 }
 
-.tech-card h3 {
-  font-size: 1.18rem;
-  margin: 6px 0 6px;
+.row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.row-title {
+  font-size: 1.15rem;
   font-weight: 600;
+  color: var(--text-hi);
 }
 
-.tech-card p {
+.row-desc {
   font-size: 0.88rem;
   color: var(--text-mid);
-  margin: 0;
 }
 
-.card-cta {
-  align-self: flex-start;
+.row-cta {
   font-family: var(--font-mono);
   font-size: 12px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--bg-void);
-  background: var(--card-accent, var(--cyan));
-  padding: 9px 16px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: gap 0.18s ease, filter 0.18s ease;
+  color: var(--card-accent, var(--cyan));
+  white-space: nowrap;
+  transition: transform 0.18s ease;
 }
 
-.tech-card:hover .card-cta { gap: 12px; filter: brightness(1.1); }
+.tech-row:hover .row-cta { transform: translateX(4px); }
+
+@media (max-width: 560px) {
+  .tech-row { grid-template-columns: auto 1fr; row-gap: 10px; }
+  .row-cta { grid-column: 2 / 3; }
+}
 
 /* ---------------------------------------------------------------------
    TECHNIQUE LAYOUT

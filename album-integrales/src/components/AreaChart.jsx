@@ -23,7 +23,7 @@ export default function AreaChart({
   a,
   b,
   fColor = '#00f0ff',
-  gColor = '#ff3df0',
+  gColor = '#ff2d4d',
   fLabel = 'f(x)',
   gLabel = 'g(x)',
   width = 520,

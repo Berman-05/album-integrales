@@ -7,29 +7,36 @@ export default function Home() {
     <main>
       <section className="hero">
         <span className="eyebrow">
+          <span className="dot" />
+          Cálculo Integral · 5 módulos
         </span>
         <h1>Álbum de Técnicas de Integración</h1>
         <p className="lead">
-          Bernardo Velásquez 1632224
+          Una guía visual e interactiva con las cinco técnicas fundamentales para resolver integrales:
+          fórmulas, criterios de uso, ejemplos resueltos paso a paso y aplicaciones al cálculo de áreas
+          entre curvas.
         </p>
       </section>
 
-      <section className="card-grid">
+      <section className="tech-list">
         {techniques.map((t) => (
-          <article className="tech-card" key={t.id} style={{ '--card-accent': t.accent }}>
-            <div>
-              <div className="num">{t.numero}</div>
-              <h3>{t.titulo}</h3>
-              <p>{t.resumenHome}</p>
-            </div>
-            <Link to={`/tecnica/${t.id}`} className="card-cta">
-              Ver técnica →
-            </Link>
-          </article>
+          <Link
+            to={`/tecnica/${t.id}`}
+            className="tech-row"
+            key={t.id}
+            style={{ '--card-accent': t.accent }}
+          >
+            <span className="row-num">{t.numero}</span>
+            <span className="row-body">
+              <span className="row-title">{t.titulo}</span>
+              <span className="row-desc">{t.resumenHome}</span>
+            </span>
+            <span className="row-cta">Ver técnica →</span>
+          </Link>
         ))}
       </section>
 
-     
+      <footer className="footer">Álbum de Técnicas de Integración — hecho con React + Vite + KaTeX</footer>
     </main>
   )
 }
