@@ -36,7 +36,7 @@ export default function Home() {
         ))}
       </section>
 
-      <footer className="footer">Álbum de Técnicas de Integración — hecho con React + Vite + KaTeX</footer>
+      <footer className="footer">Álbum de Técnicas de Integración </footer>
     </main>
   )
 }

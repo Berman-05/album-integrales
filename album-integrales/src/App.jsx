@@ -26,7 +26,7 @@ export default function App() {
           <span className="glyph">∫</span>
           <span>
             Álbum de Integrales
-            <small>Técnicas · UI Cyberpunk</small>
+            <small>Bernardo Velásquez 1632224</small>
           </span>
         </NavLink>
 
