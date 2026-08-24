@@ -7,7 +7,7 @@ export default function Home() {
     <main>
       <section className="hero">
         <span className="eyebrow">
-          
+        </span>
         <h1>Álbum de Técnicas de Integración</h1>
         <p className="lead">
           Bernardo Velásquez 1632224
