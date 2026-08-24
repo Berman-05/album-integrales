@@ -6,7 +6,16 @@ export default function Home() {
   return (
     <main>
       <section className="hero">
+        <span className="eyebrow">
+          <span className="dot" />
+          Cálculo Integral · 5 módulos
+        </span>
         <h1>Álbum de Técnicas de Integración</h1>
+        <p className="lead">
+          Una guía visual e interactiva con las cinco técnicas fundamentales para resolver integrales:
+          fórmulas, criterios de uso, ejemplos resueltos paso a paso y aplicaciones al cálculo de áreas
+          entre curvas.
+        </p>
       </section>
 
       <section className="tech-list">
@@ -27,7 +36,7 @@ export default function Home() {
         ))}
       </section>
 
-      <footer className="footer">Álbum de Técnicas de Integración</footer>
+      <footer className="footer">Álbum de Técnicas de Integración — hecho con React + Vite + KaTeX</footer>
     </main>
   )
 }

@@ -1,12 +1,24 @@
-import React from 'react'
-import { Routes, Route, NavLink } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Routes, Route, NavLink, useLocation } from 'react-router-dom'
 import Home from './components/Home.jsx'
 import TechniqueLayout from './components/TechniqueLayout.jsx'
 import { techniques } from './data/techniques.js'
 
+// React Router no reinicia el scroll al navegar entre rutas (a diferencia
+// de una recarga normal de página). Sin esto, al cambiar de técnica el
+// navegador conserva la posición vertical de la página anterior.
+function ScrollToTop() {
+  const { pathname } = useLocation()
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+  return null
+}
+
 export default function App() {
   return (
     <>
+      <ScrollToTop />
       <div className="grid-underlay" />
 
       <header className="navbar">
@@ -14,7 +26,7 @@ export default function App() {
           <span className="glyph">∫</span>
           <span>
             Álbum de Integrales
-            <small>Bernardo Velásquez 1632224</small>
+            <small>Técnicas · UI Cyberpunk</small>
           </span>
         </NavLink>
 
