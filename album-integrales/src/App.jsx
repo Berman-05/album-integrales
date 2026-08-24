@@ -14,7 +14,7 @@ export default function App() {
           <span className="glyph">∫</span>
           <span>
             Álbum de Integrales
-            <small></small>
+            <small>Bernardo Velásquez 1632224</small>
           </span>
         </NavLink>
 
